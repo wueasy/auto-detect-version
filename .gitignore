@@ -3,21 +3,40 @@
 
 # Log file
 *.log
+*.epoch
+*.lck
 
 # BlueJ files
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+/.metadata/
+/.recommenders/
+/**/logs/
+/**/target/
+/**/.settings/
+/**/.api_generated/
+/**/.apt_generated_tests/
+/**/node_modules/
+/**/transaction-logs/
+/**/webapp/
+/**/_book/
+/RemoteSystemsTempFiles/
+/**/.sts4-cache/
 
 # Package Files #
-*.jar
+#*.jar
 *.war
-*.nar
 *.ear
 *.zip
+*.gz
 *.tar.gz
-*.rar
+#*.rar
+*.factorypath
+*.springBeans
+*.project
+*.classpath
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
