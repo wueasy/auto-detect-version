@@ -1,6 +1,6 @@
 # auto-detect-version
 
-·auto-detect-version· 是一个用于自定检测pom文件中所依赖jar包最新版本的工具，用于快速检测版本中maven中心仓库中的最小版本。
+`auto-detect-version` 是一个用于自定检测pom文件中所依赖jar包最新版本的工具，用于快速检测版本中maven中心仓库中的最小版本。
 
 当发现pom文件中的版本号和maven中心长裤不一致时，输出最新的相关信息。
 
