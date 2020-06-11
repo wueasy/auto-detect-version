@@ -36,19 +36,21 @@ import org.xml.sax.SAXException;
 public class CheckCommands {
 	
 	/**
-	 * 检测的地址，默认maven中心仓库
+	 * Address of detection, default Maven central warehouse
 	 */
 	private static final String CHECK_URL = "https://repo1.maven.org/maven2/";
 	
 
 	/**
-	 * check E:\\git\\aliyun\\wueasy\\pom.xml
-	 * check E:\\git\\wueasy\\auto-detect-version\\auto-detect-version\\pom.xml
+	 * Detect the latest dependent version of jar package in POM file
+	 * 
+	 * demo:  
+	 *      check E:\\git\\wueasy\\auto-detect-version\\auto-detect-version\\pom.xml
 	 * @author: fallsea
 	 * @param path
 	 * @return
 	 */
-	@ShellMethod(value = "检测pom文件中的最新jar包依赖版本", key = "check")
+	@ShellMethod(value = "Detect the latest dependent version of jar package in POM file", key = "check")
     public String check(String path){
 		
 		SAXReader reader = new SAXReader();
@@ -56,7 +58,7 @@ public class CheckCommands {
 		try {
 			reader.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 		} catch (SAXException e) {
-			return "读取pom文件失败！";
+			return "Failed to read POM file!";
 		}
 		Document document = null;
 		try {
@@ -66,16 +68,16 @@ public class CheckCommands {
 				document = reader.read(new File(path));
 			}
 		} catch (DocumentException e) {
-			return "读取pom文件失败！";
+			return "Failed to read POM file!";
 		} catch (MalformedURLException e) {
-			return "读取pom文件失败！";
+			return "Failed to read POM file!";
 		} catch (Exception e) {
-			return "读取pom文件失败！";
+			return "Failed to read POM file!";
 		}
 		
 		Map<String,String> variableMap = new HashMap<>();
 
-		//获取配置变量信息
+		//Get POM variable information
 		List<Element> propertieList = document.getRootElement().element("properties").elements();
 		for (Element element : propertieList) {
 			variableMap.put("${"+element.getName()+"}", element.getTextTrim());
@@ -95,14 +97,14 @@ public class CheckCommands {
 			}
 		}
 		
-		//获取jar包信息
+		//Get jar package information
 		if(null!=document.getRootElement().element("dependencyManagement") && null!=document.getRootElement().element("dependencyManagement").element("dependencies")) {
 			check(document.getRootElement().element("dependencyManagement").element("dependencies").elements(), variableMap);
 		}
 		if(null!=document.getRootElement().element("dependencies")) {
 			check(document.getRootElement().element("dependencies").elements(), variableMap);
 		}
-		return "检测成功！";
+		return "Operation succeeded!";
     }
 	
 	/**
@@ -148,9 +150,9 @@ public class CheckCommands {
 				System.out.println("    <groupId>"+groupId+"</groupId>");
 				System.out.println("    <artifactId>"+artifactId+"</artifactId>");
 				System.out.println("    <version>"+version+"</version>");
-				//最新版本
+				//Latest version
 				System.out.println("    <latest>"+latest+"</latest>");
-				//同版本最新版本
+				//Latest version of the same version
 				
 				if(version.indexOf(".")!=-1) {
 					String start = version.substring(0,version.indexOf(".")+1);
@@ -167,9 +169,6 @@ public class CheckCommands {
 						}
 					}
 				}
-				
-				
-				
 				System.out.println("</dependency>");
 				System.out.println();
 			}

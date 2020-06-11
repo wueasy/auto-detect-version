@@ -22,7 +22,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 /**
- * 启动类
+ * 
  * @author: fallsea
  * @version 1.0
  */

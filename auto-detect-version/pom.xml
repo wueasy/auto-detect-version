@@ -19,11 +19,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wueasy</groupId>
 	<artifactId>auto-detect-version</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 	<url>http://www.wueasy.com</url>
 	<name>auto-detect-version</name>
-	<description>自动检测pom文件中依赖包最新版本工具</description>
+	<description>Tools for automatically detecting the latest version of dependent packages in POM files</description>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
