@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -65,7 +66,7 @@ public class CheckCommands {
 			if(path.startsWith("http://") || path.startsWith("https://")) {
 				document = reader.read(new URL(path));
 			}else {
-				document = reader.read(new File(path));
+				document = reader.read(new File(FilenameUtils.normalize(path)));
 			}
 		} catch (DocumentException e) {
 			return "Failed to read POM file!";
